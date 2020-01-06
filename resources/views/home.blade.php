@@ -57,29 +57,57 @@
 	        <span class="oi oi-menu"></span> Menu
 	      </button>
 
+	      
 	      <div class="collapse navbar-collapse" id="ftco-nav">
 	        <ul class="navbar-nav ml-auto">
-	          <li class="nav-item active"><a href="index.html" class="nav-link">Home</a></li>
-	          <li class="nav-item dropdown">
+	          <li class="nav-item"><a href="{{route('home')}}" class="nav-link">Home</a></li>
+	          <li class="nav-item active dropdown">
               <a class="nav-link dropdown-toggle" href="#" id="dropdown04" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Shop</a>
               <div class="dropdown-menu" aria-labelledby="dropdown04">
-              	<a class="dropdown-item" href="shop.html">Shop</a>
-              	<a class="dropdown-item" href="wishlist.html">Wishlist</a>
-                <a class="dropdown-item" href="product-single.html">Single Product</a>
-                <a class="dropdown-item" href="cart.html">Cart</a>
-                <a class="dropdown-item" href="checkout.html">Checkout</a>
+              	<a class="dropdown-item" href="{{route('shop')}}">Shop</a>
+              	<a class="dropdown-item" href="{{route('wishlist')}}">Liste de souhaits</a>
+                <a class="dropdown-item" href="{{route('product_single')}}">Produit unique</a>
+                <a class="dropdown-item" href="{{route('cart')}}">Cart</a>
+                <a class="dropdown-item" href="{{route('checkout')}}">Check-out</a>
               </div>
             </li>
-	          <li class="nav-item"><a href="about.html" class="nav-link">About</a></li>
-	          <li class="nav-item"><a href="blog.html" class="nav-link">Blog</a></li>
-	          <li class="nav-item"><a href="contact.html" class="nav-link">Contact</a></li>
-	          <li class="nav-item cta cta-colored"><a href="cart.html" class="nav-link"><span class="icon-shopping_cart"></span>[0]</a></li>
 
+	          <li class="nav-item"><a href="{{route('contact')}}" class="nav-link">Contact</a></li>
+			  <li class="nav-item cta cta-colored"><a href="cart.html" class="nav-link"><span class="icon-shopping_cart"></span>[0]</a></li>
+			  <li class="nav-item dropdown">
+              <a class="nav-link dropdown-toggle" href="#" id="dropdown04" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Compte</a>
+              <div class="dropdown-menu" aria-labelledby="dropdown04">
+			  @guest
+				  <a class="dropdown-item" href="{{ route('login') }}">{{ __('Se connecter') }}</a>
+				  @if (Route::has('register'))
+				  <a class="dropdown-item" href="{{ route('register') }}">{{ __('Sinscrire') }}</a>
+				  @endif
+			 @else
+			 <a class="dropdown-item" href="">{{ Auth::user()->name }}</a><li></li>
+				 @if(Auth::user()->usertype == 'admin')
+				 <a class="dropdown-item" href="{{ route('product.list') }}">Profil Admin</a>
+				
+				 @endif
+				 <li><a class="dropdown-item" href="{{ route('logout') }}"
+                                                                onclick="event.preventDefault();
+                                                                document.getElementById('logout-form').submit();">
+                                                               {{ __('Deconnexion') }}
+                                                             </a>
+                                                             <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
+                                                                 @csrf
+                                                            </form>
+										</li>  
+				@endguest               
+
+			
+                                           
+				  
 	        </ul>
 	      </div>
 	    </div>
 	  </nav>
     <!-- END nav -->
+
     <section id="home-section" class="hero">
 		  <div class="home-slider owl-carousel">
 	      <div class="slider-item" style="background-image: url(images/gt.jpeg);">
@@ -479,7 +507,78 @@
         </div>   		
     	</div>
     </section>
+	<footer class="ftco-footer ftco-section">
+      <div class="container">
+      
+      	<div class="row">
+      		<div class="mouse">
+						<a href="#" class="mouse-icon">
+							<div class="mouse-wheel"><span class="ion-ios-arrow-up"></span></div>
+						</a>
+					</div>
+      	</div>
+        <div class="row mb-5">
+          <div class="col-md">
+            <div class="ftco-footer-widget mb-4">
+              <h2 class="ftco-heading-2">Sokhna'Art</h2>
+               
+              <ul class="ftco-footer-social list-unstyled float-md-left float-lft mt-5">
+                <li class="ftco-animate"><a href="#"><span class="icon-twitter"></span></a></li>
+                <li class="ftco-animate"><a href="#"><span class="icon-facebook"></span></a></li>
+                <li class="ftco-animate"><a href="#"><span class="icon-instagram"></span></a></li>
+              </ul>
+            </div>
+          </div>
+          <div class="col-md">
+            <div class="ftco-footer-widget mb-4 ml-md-5">
+              <h2 class="ftco-heading-2">Menu</h2>
+              <ul class="list-unstyled">
+                <li><a href="#" class="py-2 d-block">Magasin</a></li>
+                <li><a href="#" class="py-2 d-block">À propos</a></li>
+                <li><a href="#" class="py-2 d-block">Journal</a></li>
+                <li><a href="#" class="py-2 d-block">Contactez-nous</a></li>
+              </ul>
+            </div>
+          </div>
+          <div class="col-md-4">
+             <div class="ftco-footer-widget mb-4">
+              <h2 class="ftco-heading-2">Aidez-moi</h2>
+              <div class="d-flex">
+	              <ul class="list-unstyled mr-l-5 pr-l-3 mr-4">
+	                <li><a href="#" class="py-2 d-block">Informations sur la livraison</a></li>
+	                <li><a href="#" class="py-2 d-block">Résultats &amp;Échange</a></li>
+	                <li><a href="#" class="py-2 d-block">termes &amp; Conditions</a></li>
+	                <li><a href="#" class="py-2 d-block">Politique de confidentialité</a></li>
+	              </ul>
+	              <ul class="list-unstyled">
+	                <li><a href="#" class="py-2 d-block">FAQ</a></li>
+	                <li><a href="#" class="py-2 d-block">Contact</a></li>
+	              </ul>
+	            </div>
+            </div>
+          </div>
+          <div class="col-md">
+            <div class="ftco-footer-widget mb-4">
+            	<h2 class="ftco-heading-2">Vous avez des questions?</h2>
+            	<div class="block-23 mb-3">
+	              <ul>
+	                <li><span class="icon icon-map-marker"></span><span class="text">Dakar sacre coeur</span></li>
+	                <li><a href="#"><span class="icon icon-phone"></span><span class="text">+221773553486</span></a></li>
+	                <li><a href="#"><span class="icon icon-envelope"></span><span class="text">sokhnatoure454 gmail.com</span></a></li>
+	              </ul>
+	            </div>
+            </div>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-md-12 text-center">
 
+            
+			
+          </div>
+        </div>
+      </div>
+    </footer>
     
           </div>
         </div>

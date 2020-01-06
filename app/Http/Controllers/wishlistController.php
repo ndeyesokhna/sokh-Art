@@ -7,6 +7,7 @@ use Illuminate\Http\Request;
 class wishlistController extends Controller
 {
 public function wishlist(){
-    return view('wishlist');
+    $products = \App\Product::orderBy('created_at', 'DESC')->get();
+    return view('wishlist', compact('products'));
 }
 }
