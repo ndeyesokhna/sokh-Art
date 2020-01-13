@@ -59,20 +59,21 @@
 
 	      <div class="collapse navbar-collapse" id="ftco-nav">
 	        <ul class="navbar-nav ml-auto">
-	          <li class="nav-item"><a href="{{route('home')}}" class="nav-link">Home</a></li>
+	          <li class="nav-item"><a href="{{route('home')}}" class="nav-link"> ACCUEIl</a></li>
 	          <li class="nav-item active dropdown">
-              <a class="nav-link dropdown-toggle" href="#" id="dropdown04" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Shop</a>
+              <a class="nav-link dropdown-toggle" href="#" id="dropdown04" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Boutiques</a>
               <div class="dropdown-menu" aria-labelledby="dropdown04">
-              	<a class="dropdown-item" href="{{route('shop')}}">Shop</a>
+              	<a class="dropdown-item" href="{{route('shop')}}">Boutiques</a>
               	<a class="dropdown-item" href="{{route('wishlist')}}">Liste de souhaits</a>
                 <a class="dropdown-item" href="{{route('product_single')}}">Produit unique</a>
-                <a class="dropdown-item" href="{{route('cart')}}">Cart</a>
-                <a class="dropdown-item" href="{{route('checkout')}}">Check-out</a>
+                <a class="dropdown-item" href="{{route('cart')}}">Mon panier</a>
+                <a class="dropdown-item" href="{{route('checkout')}}"> Caissier</a>
+                <a class="dropdown-item" href="{{route('about')}}"> Detail</a>
               </div>
             </li>
 
 	          <li class="nav-item active"><a href="{{route('contact')}}" class="nav-link">Contact</a></li>
-	          <li class="nav-item cta cta-colored"><a href="{{route('cart')}}" class="nav-link"><span class="icon-shopping_cart"></span>[0]</a></li>
+	      
 
 	        </ul>
 	      </div>
@@ -84,8 +85,8 @@
       <div class="container">
         <div class="row no-gutters slider-text align-items-center justify-content-center">
           <div class="col-md-9 ftco-animate text-center">
-          	<p class="breadcrumbs"><span class="mr-2"><a href="index.html">Home</a></span> <span>Contact us</span></p>
-            <h1 class="mb-0 bread">Contact us</h1>
+          	<p class="breadcrumbs"><span class="mr-2"><a href="index.html"> Accueil</a></span> <span> NOUS CONTACTER</span></p>
+            <h1 class="mb-0 bread">CONTACTER NOUS</h1>
           </div>
         </div>
       </div>

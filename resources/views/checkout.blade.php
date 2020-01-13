@@ -59,20 +59,20 @@
 
 	      <div class="collapse navbar-collapse" id="ftco-nav">
 	        <ul class="navbar-nav ml-auto">
-	          <li class="nav-item"><a href="{{route('home')}}" class="nav-link">Home</a></li>
+	          <li class="nav-item"><a href="{{route('home')}}" class="nav-link">  ACCUEIl</a></li>
 	          <li class="nav-item active dropdown">
-              <a class="nav-link dropdown-toggle" href="#" id="dropdown04" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Shop</a>
+              <a class="nav-link dropdown-toggle" href="#" id="dropdown04" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"> Boutiques</a>
               <div class="dropdown-menu" aria-labelledby="dropdown04">
-              	<a class="dropdown-item" href="{{route('shop')}}">Shop</a>
+              	<a class="dropdown-item" href="{{route('shop')}}">Boutiques </a>
               	<a class="dropdown-item" href="{{route('wishlist')}}">Liste de souhaits</a>
                 <a class="dropdown-item" href="{{route('product_single')}}">Produit unique</a>
-                <a class="dropdown-item" href="{{route('cart')}}">Cart</a>
-                <a class="dropdown-item" href="{{route('checkout')}}">Check-out</a>
+                <a class="dropdown-item" href="{{route('cart')}}"> Mon panier</a>
+                <a class="dropdown-item" href="{{route('checkout')}}">Caissier </a>
               </div>
 	     
             </li>
 	          <li class="nav-item"><a href="{{route('contact')}}" class="nav-link">Contact</a></li>
-	          <li class="nav-item cta cta-colored"><a href="{{route('cart')}}" class="nav-link"><span class="icon-shopping_cart"></span>[0]</a></li>
+	
 
 	        </ul>
 	      </div>
@@ -84,8 +84,8 @@
       <div class="container">
         <div class="row no-gutters slider-text align-items-center justify-content-center">
           <div class="col-md-9 ftco-animate text-center">
-          	<p class="breadcrumbs"><span class="mr-2"><a href="{{route('home')}}">Home</a></span> <span>Checkout</span></p>
-            <h1 class="mb-0 bread">Checkout</h1>
+          	<p class="breadcrumbs"><span class="mr-2"><a href="{{route('home')}}">Accueil</a></span> <span>Caissier </span></p>
+            <h1 class="mb-0 bread">Caissier</h1>
           </div>
         </div>
       </div>
@@ -96,33 +96,33 @@
         <div class="row justify-content-center">
           <div class="col-xl-7 ftco-animate">
 						<form action="#" class="billing-form">
-							<h3 class="mb-4 billing-heading">Billing Details</h3>
+							<h3 class="mb-4 billing-heading">Détails de la facturation</h3>
 	          	<div class="row align-items-end">
 	          		<div class="col-md-6">
 	                <div class="form-group">
-	                	<label for="firstname">Firt Name</label>
+	                	<label for="firstname"> Prénom</label>
 	                  <input type="text" class="form-control" placeholder="">
 	                </div>
 	              </div>
 	              <div class="col-md-6">
 	                <div class="form-group">
-	                	<label for="lastname">Last Name</label>
+	                	<label for="lastname">Nom </label>
 	                  <input type="text" class="form-control" placeholder="">
 	                </div>
                 </div>
                 <div class="w-100"></div>
 		            <div class="col-md-12">
 		            	<div class="form-group">
-		            		<label for="country">State / Country</label>
+		            		<label for="country"> État / Pays</label>
 		            		<div class="select-wrap">
 		                  <div class="icon"><span class="ion-ios-arrow-down"></span></div>
 		                  <select name="" id="" class="form-control">
 		                  	<option value="">France</option>
 		                    <option value="">Italy</option>
-		                    <option value="">Philippines</option>
-		                    <option value="">South Korea</option>
-		                    <option value="">Hongkong</option>
-		                    <option value="">Japan</option>
+		                    <option value="">Senegal</option>
+		                    <option value="">USA</option>
+		                    <option value="">Gambi</option>
+		                    <option value="">Mali</option>
 		                  </select>
 		                </div>
 		            	</div>
@@ -130,7 +130,7 @@
 		            <div class="w-100"></div>
 		            <div class="col-md-6">
 		            	<div class="form-group">
-	                	<label for="streetaddress">Street Address</label>
+	                	<label for="streetaddress">Adresse de rue </label>
 	                  <input type="text" class="form-control" placeholder="House number and street name">
 	                </div>
 		            </div>
@@ -142,26 +142,26 @@
 		            <div class="w-100"></div>
 		            <div class="col-md-6">
 		            	<div class="form-group">
-	                	<label for="towncity">Town / City</label>
+	                	<label for="towncity"> Ville </label>
 	                  <input type="text" class="form-control" placeholder="">
 	                </div>
 		            </div>
 		            <div class="col-md-6">
 		            	<div class="form-group">
-		            		<label for="postcodezip">Postcode / ZIP *</label>
+		            		<label for="postcodezip"> Code postal / ZIP *</label>
 	                  <input type="text" class="form-control" placeholder="">
 	                </div>
 		            </div>
 		            <div class="w-100"></div>
 		            <div class="col-md-6">
 	                <div class="form-group">
-	                	<label for="phone">Phone</label>
+	                	<label for="phone">Téléphone </label>
 	                  <input type="text" class="form-control" placeholder="">
 	                </div>
 	              </div>
 	              <div class="col-md-6">
 	                <div class="form-group">
-	                	<label for="emailaddress">Email Address</label>
+	                	<label for="emailaddress"> Adresse e-mail</label>
 	                  <input type="text" class="form-control" placeholder="">
 	                </div>
                 </div>
@@ -169,8 +169,10 @@
                 <div class="col-md-12">
                 	<div class="form-group mt-4">
 										<div class="radio">
-										  <label class="mr-3"><input type="radio" name="optradio"> Create an Account? </label>
-										  <label><input type="radio" name="optradio"> Ship to different address</label>
+										  <label class="mr-3"><input type="radio" name="optradio">Créer un compte?
+
+</label>
+										  <label><input type="radio" name="optradio">Envoyer à une adresse différente </label>
 										</div>
 									</div>
                 </div>
@@ -181,58 +183,60 @@
 	          <div class="row mt-5 pt-3">
 	          	<div class="col-md-12 d-flex mb-5">
 	          		<div class="cart-detail cart-total p-3 p-md-4">
-	          			<h3 class="billing-heading mb-4">Cart Total</h3>
+	          			<h3 class="billing-heading mb-4">Total du panier </h3>
 	          			<p class="d-flex">
-		    						<span>Subtotal</span>
-		    						<span>$20.60</span>
+		    						<span> Total</span>
+		    						<span>300000</span>
 		    					</p>
 		    					<p class="d-flex">
-		    						<span>Delivery</span>
-		    						<span>$0.00</span>
+		    						<span>Livraison </span>
+		    						<span>000</span>
 		    					</p>
 		    					<p class="d-flex">
-		    						<span>Discount</span>
-		    						<span>$3.00</span>
+		    						<span>Remise </span>
+		    						<span>3000</span>
 		    					</p>
 		    					<hr>
 		    					<p class="d-flex total-price">
 		    						<span>Total</span>
-		    						<span>$17.60</span>
+		    						<span>303000</span>
 		    					</p>
 								</div>
 	          	</div>
 	          	<div class="col-md-12">
 	          		<div class="cart-detail p-3 p-md-4">
-	          			<h3 class="billing-heading mb-4">Payment Method</h3>
+	          			<h3 class="billing-heading mb-4">Mode de paiement </h3>
 									<div class="form-group">
 										<div class="col-md-12">
 											<div class="radio">
-											   <label><input type="radio" name="optradio" class="mr-2"> Direct Bank Tranfer</label>
+											   <label><input type="radio" name="optradio" class="mr-2">Transfert bancaire direct
+
+</label>
 											</div>
 										</div>
 									</div>
 									<div class="form-group">
 										<div class="col-md-12">
 											<div class="radio">
-											   <label><input type="radio" name="optradio" class="mr-2"> Check Payment</label>
+											   <label><input type="radio" name="optradio" class="mr-2"> Vérifier le paiement</label>
 											</div>
 										</div>
 									</div>
 									<div class="form-group">
 										<div class="col-md-12">
 											<div class="radio">
-											   <label><input type="radio" name="optradio" class="mr-2"> Paypal</label>
+											   <label><input type="radio" name="optradio" class="mr-2"> Pay Pal</label>
 											</div>
 										</div>
 									</div>
 									<div class="form-group">
 										<div class="col-md-12">
 											<div class="checkbox">
-											   <label><input type="checkbox" value="" class="mr-2"> I have read and accept the terms and conditions</label>
+											   <label><input type="checkbox" value="" class="mr-2">J'ai lu et j'accepte les termes et conditions </label>
 											</div>
 										</div>
 									</div>
-									<p><a href="#"class="btn btn-primary py-3 px-4">Place an order</a></p>
+									<p><a href="#"class="btn btn-primary py-3 px-4"> Commander</a></p>
 								</div>
 	          	</div>
 	          </div>

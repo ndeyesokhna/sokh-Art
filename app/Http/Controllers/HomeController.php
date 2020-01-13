@@ -36,18 +36,20 @@ class HomeController extends Controller
         return view('shop', compact('products'));
     }
     public function product_single(){
-        return view('product_single');
+        $products = \App\Product::take(4)->get();
+        return view('product_single', compact('products'));
     } 
 
  public function cart(){
-    $products = \App\Product::orderBy('created_at', 'DESC')->get();
+    $products = \App\Product::take(3)->get();
     return view('cart', compact('products'));
     }  
     public function checkout(){
         return view('checkout');
     } 
     public function about(){
-        return view('about');
+        $products = \App\Product::take(1)->get();
+        return view('about' , compact('products'));
     }
     public function blog(){
         return view('blog');
@@ -55,6 +57,6 @@ class HomeController extends Controller
     public function contact(){
         return view('contact');
     }
-
+  
 
 }
