@@ -3,36 +3,20 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use  App\Catagory;
-class CategoriesController extends Controller
+use App\Product;
+use Gloudemans\Shoppingcart\Facades\Cart;
+class CartsController extends Controller
+
 {
     /**
      * Display a listing of the resource.
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
-    {
-        $catagories = \App\Catagory::orderBy('created_at', 'DESC')->get();
-   return view('products.indexcato', compact('catagories'));
-       
-    }
 
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function create()
+    /**cartction create()
     {
-        $catagories = Catagory::OrderBy('name')->get();
-        return view('admin.products.createcato' , compact('catagories'));
-       
-
-    }
-    public function indexcato(){
-        $catagories = Catagory::all();
-        return view('admin.products.indexcato', compact('catagories'));
+        //
     }
 
     /**
@@ -43,22 +27,20 @@ class CategoriesController extends Controller
      */
     public function store(Request $request)
     {
+     
+       $duplicata =  cart::search(function($cartItem,$rowId)use ($request)
+         {
+             return $cartItem->id==$request->product_id;
+         });
+         if($duplicata->isNotEmpty()){
+            return redirect()->route('shop')->with('success' ,'le produit a deja ete ajouter');    
+         }
+         $product = Product::find($request->product_id);
+        cart::add($product->id ,$product->name ,1, $product->price );
 
-        $catagories = new Catagory();
-        $catagories->name = $request->input('name');
-        $catagories::create(['name'=>$request->input('name')]);
-        $catagories->save();
-   return redirect('/indexcato');
-
+        return redirect()->route('shop')->with('success' ,'le produit a bien ete ajouter');
     }
 
-public function indexcato_delete($id)
-{
-    $catagories = Catagory::find($id);
-    if($catagories)
-        $catagories->delete();
-    return redirect()->back();
-}
     /**
      * Display the specified resource.
      *
@@ -99,8 +81,16 @@ public function indexcato_delete($id)
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy($rowId)
     {
-        //
+       Cart::remove($rowId);
+     
+        return back()->with('success', 'le produit a ete bien supprimer');
     }
+    public function cart(){
+       
+        return view("cart");
+    }
+     
+     
 }

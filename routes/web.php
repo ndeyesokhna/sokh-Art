@@ -11,32 +11,50 @@
 |
 */
 
-Route::get('/', "HomeController@index")->name('home');
+Route::get('/accueil', "HomeController@index")->name('home');
+Route::get('/',"HomeController@accueil")->name('accueil');
 Route::get('/shop', "HomeController@shop")->name('shop');
 Route::get('/about', "HomeController@about")->name('about');
 Route::get('/blog', "HomeController@blog")->name('blog');
 Route::get('/contact', "HomeController@contact")->name('contact');
+Route::post('/contact', "ContactsController@store")->name('ajout_contact');
+Route::get('/contact', "ContactsController@contact")->name('contact');
+Route::post('/panier/ajouter', "CartsController@store")->name('cart_store');
+Route::get('/videpanier', function(){
+    Cart::destroy();
+});
+//Route::get('/panier', "CartsController@cart")->name('cart');
+Route::delete('/panier/{rowId}','CartsController@destroy')->name('cart.destroy');
+
+
+
+
+
+
+
 Route::get('/checkout', "HomeController@checkout")->name('checkout');
-Route::get('/cart', "HomeController@cart")->name('cart');
+Route::get('/cart', "CartsController@cart")->name('cart');
 Route::get('/blog_single', "HomeController@blog_single")->name('blog_single');
 Route::get('/product_single', "HomeController@product_single")->name('product_single');
 Route::get('/wishlist', "wishlistController@wishlist")->name('wishlist');
 Route::get("/products", "ProductsController@index");
-Route::get('/category/form' ,"CategoriesController@create" );
-Route::post("/category/traitement", "CategoriesController@store");
-Route::resource('category', "CategoriesController");
+Route::get('/catagory/form' ,"CategoriesController@create" )->name('categories.create');
+Route::post("/catagory/traitement", "CategoriesController@store");
+Route::resource('catagory', "CategoriesController");
 Route::resource('product', 'ProductsController');
 Route::patch("/product/update/{id}", "ProductsController@update")->name('product.update');
 Route::get("/product/edit/{id}", "ProductsController@edit")->name('editer_produit');
+Route::get("/indexcato", "CategoriesController@indexcato")->name('indexcato');
 
 
 
 Route::group(['middleware'=>['auth','admin']], function(){
 Route::get('/admin/products/create' ,"AdminController@create" )->name('product.create');
 Route::post("/admin/products/traitement", "AdminController@store");
-Route::get('/admin/product', "AdminController@product_list")->name('product.list');
+Route::get('/admin/product', "AdminController@product_list")->name('product-list');
 Route::get('/admin/product_edit/{id}' , "AdminController@product_edit")->name('product.edit');
 Route::delete('/admin/product/delete/{id}' , "AdminController@product_delete")->name('product.delete');
+Route::delete('/admin/indexcato/delete/{id}' , "CategoriesController@indexcato_delete")->name('indexcato.delete');
 });
 
 Auth::routes();

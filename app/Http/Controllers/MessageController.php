@@ -2,9 +2,10 @@
 
 namespace App\Http\Controllers;
 
+use App\Message;
 use Illuminate\Http\Request;
-use  App\Catagory;
-class CategoriesController extends Controller
+
+class MessageController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -13,9 +14,7 @@ class CategoriesController extends Controller
      */
     public function index()
     {
-        $catagories = \App\Catagory::orderBy('created_at', 'DESC')->get();
-   return view('products.indexcato', compact('catagories'));
-       
+        //
     }
 
     /**
@@ -25,14 +24,7 @@ class CategoriesController extends Controller
      */
     public function create()
     {
-        $catagories = Catagory::OrderBy('name')->get();
-        return view('admin.products.createcato' , compact('catagories'));
-       
-
-    }
-    public function indexcato(){
-        $catagories = Catagory::all();
-        return view('admin.products.indexcato', compact('catagories'));
+        //
     }
 
     /**
@@ -43,29 +35,16 @@ class CategoriesController extends Controller
      */
     public function store(Request $request)
     {
-
-        $catagories = new Catagory();
-        $catagories->name = $request->input('name');
-        $catagories::create(['name'=>$request->input('name')]);
-        $catagories->save();
-   return redirect('/indexcato');
-
+        //
     }
 
-public function indexcato_delete($id)
-{
-    $catagories = Catagory::find($id);
-    if($catagories)
-        $catagories->delete();
-    return redirect()->back();
-}
     /**
      * Display the specified resource.
      *
-     * @param  int  $id
+     * @param  \App\Message  $message
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function show(Message $message)
     {
         //
     }
@@ -73,10 +52,10 @@ public function indexcato_delete($id)
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  int  $id
+     * @param  \App\Message  $message
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function edit(Message $message)
     {
         //
     }
@@ -85,10 +64,10 @@ public function indexcato_delete($id)
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
+     * @param  \App\Message  $message
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(Request $request, Message $message)
     {
         //
     }
@@ -96,10 +75,10 @@ public function indexcato_delete($id)
     /**
      * Remove the specified resource from storage.
      *
-     * @param  int  $id
+     * @param  \App\Message  $message
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy(Message $message)
     {
         //
     }

@@ -27,8 +27,9 @@ class LoginController extends Controller
      */
    // protected $redirectTo = '/home';
    protected function redirectTo(){
-     if(Auth::user()->usertype == 'admin'){
-         return 'product.list';
+       
+     if(Auth::user()->roles == 'admin'){
+         return 'admin/product';
      } 
      else{
          return 'home';

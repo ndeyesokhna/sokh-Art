@@ -83,6 +83,7 @@
 
     <div class="hero-wrap hero-bread" style="background-image: url('images/ax.jpeg');">
       <div class="container">
+
         <div class="row no-gutters slider-text align-items-center justify-content-center">
           <div class="col-md-9 ftco-animate text-center">
           	<p class="breadcrumbs"><span class="mr-2"><a href="index.html"> Accueil</a></span> <span> NOUS CONTACTER</span></p>
@@ -118,19 +119,24 @@
           </div>
         </div>
         <div class="row block-9">
-          <div class="col-md-6 order-md-last d-flex">
-            <form action="#" class="bg-white p-5 contact-form">
+           
+          <div class="col-md-6 order-md-last">
+            <div class="d-flex">
+              @if(session('success'))
+                  <div class="alert alert-success">{{session('success')}}</div>
+              @endif
+            </div>   
+            <form action="{{route('ajout_contact')}}" method="post" class="bg-white p-5 contact-form">
+            @csrf
               <div class="form-group">
-                <input type="text" class="form-control" placeholder="Nom">
+                <input type="text" class="form-control" name="nom" placeholder="Nom" >
               </div>
               <div class="form-group">
-                <input type="text" class="form-control" placeholder=" Email">
+                <input type="text" class="form-control" name="email" placeholder=" Email">
               </div>
+           
               <div class="form-group">
-                <input type="text" class="form-control" placeholder="Matiere">
-              </div>
-              <div class="form-group">
-                <textarea name="" id="" cols="30" rows="7" class="form-control" placeholder="Message"></textarea>
+                <textarea  id="" cols="30" rows="7" class="form-control" name="message" placeholder="Message"></textarea>
               </div>
               <div class="form-group">
                 <input type="submit" value="Envoie Message" class="btn btn-primary py-3 px-5">

@@ -8,7 +8,7 @@
     <link href="https://fonts.googleapis.com/css?family=Poppins:200,300,400,500,600,700,800&display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css?family=Lora:400,400i,700,700i&display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css?family=Amatic+SC:400,700&display=swap" rel="stylesheet">
-
+	<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.3/css/all.css" integrity="sha384-UHRtZLI+pbxtHCWp1t77Bi1L4ZtiqrqD80Kn4Z8NTSRyMA2Fd33n5dQ8lWUE00s/" crossorigin="anonymous">
     <link rel="stylesheet" href="{{asset('temp/css/open-iconic-bootstrap.min.css')}}">
     <link rel="stylesheet" href="{{asset('temp/css/animate.css')}}">
     
@@ -74,6 +74,7 @@
             </li>
 
 	          <li class="nav-item"><a href="{{route('contact')}}" class="nav-link">Contact</a></li>
+			
 	
 
 	        </ul>
@@ -92,115 +93,74 @@
         </div>
       </div>
     </div>
-	@foreach($products as $product)
-    <section class="ftco-section ftco-cart">
-			<div class="container">
-				<div class="row">
-    			<div class="col-md-12 ftco-animate">
-    				<div class="cart-list">
-	    				<table class="table">
-						    <thead class="thead-primary">
-						      <tr class="text-center">
-						        <th>&nbsp;</th>
-						        <th>&nbsp;</th>
-						        <th>Nom du produit</th>
-						        <th>Prix</th>
-						        <th>Cathegories</th>
-						    
-						      </tr>
-						    </thead>
-						    <tbody>
-						      <tr class="text-center">
-						        <td class="product-remove"><a href="#"><span class="ion-ios-close"></span></a></td>
-						        
-						        <td class="image-prod"><div class="img" style="background-image:url( {{$product->image ? asset($product->image)
-						 : asset('uploads/images/default.png')}});"></div></td>
-						        
-						        <td class="product-name">
-						        	<h3>Costum en wacc</h3>
+		@if(Cart::count() > 0)
+			<div class="row justify-content-center mt-5"> 
+				@foreach(Cart::content() as $product)
+					<div class="col-md-6 col-lg-3 ftco-animate">
+						<div class="product">
+							<a href="#" class="img-prod"><img class="img-fluid" src="{{$product->image}}" alt="Colorlib Template" style="width:253px; height:246px;">
+								<span class="status">30%</span>
+								<div class="overlay"></div>
+							</a>
+							<div class="text py-3 pb-4 px-3 text-center">
+								<h3><a href="#">{{$product->name}}</a></h3>
+								<div class="d-flex">
+									<div class="pricing">
+										<p class="price"><span class="mr-2">{{$product->price}}</span></p>
+									</div>
+								</div>
+								<div class=" d-flex ">
+									<div class="m-auto d-flex">
 									
-						        
-						        </td>
-						        
-						        <td class="price">30000</td>
-						        
-						        <td class="quantity">
-						        	<div class="input-group mb-3">
-					             	<input type="text" name="quantity" class="quantity form-control input-number" value="vetment" >
-					          	</div>
-					          </td>
-						    
-						      </tr><!-- END TR-->
-							  @endforeach
+                                    <form  action="{{route('cart.destroy',$product->rowId)}}" method="post">
+										@csrf
+										@method('delete')
+										<button type="submit" class="text-dark">
+											<i class="fa fa-trash" ></i>
+										</button>
+									</form>
 
-						      <!--<tr class="text-center">
-						        <td class="product-remove"><a href="#"><span class="ion-ios-close"></span></a></td>
-						        
-						        <td class="image-prod"><div class="img" style="background-image:url(images/bb.png);"></div></td>
-						        
-						        <td class="product-name">
-						        	<h3>Robe pour enfant</h3>
-						        	
-						        </td>
-						        
-						        <td class="price">14000</td>
-						        
-						        <td class="quantity">
-						        	<div class="input-group mb-3">
-					             	<input type="text" name="quantity" class="quantity form-control input-number" value="vetment">
-					          	</div>
-					          </td>
-						        
-							  <tr class="text-center">
-						        <td class="product-remove"><a href="#"><span class="ion-ios-close"></span></a></td>
-						        
-						        <td class="image-prod"><div class="img" style="background-image:url(images/to.jpg);"  style="width:253px; height:246px;"></div></td>
-						        
-						        <td class="product-name">
-						        	<h3>Tableau</h3>
-						        	
-						        </td>
-						        
-						        <td class="price">300000</td>
-						        
-						        <td class="quantity">
-						        	<div class="input-group mb-3">
-					             	<input type="text" name="quantity" class="quantity form-control input-number" value="Dessin">
-					          	</div>
-					          </td>
-						      </tr><!-- END TR-->
-						    </tbody>
-						  </table>
-					  </div>
-    			</div>
-    		</div>
-    		<div class="row justify-content-end">
+
+
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+				@endforeach
+			</div>
+			@else
+			<div class ="d-flex justify-content-center" >
+			<h1>Votre panier est vide</h1>
+			 
+			</div>
+		@endif
+				
+
+		<div class="row justify-content-end">
     			<div class="col-lg-4 mt-5 cart-wrap ftco-animate">
     				<div class="cart-total mb-3">
     					
-  						<form action="#" class="info">
-	              <div class="form-group">
-	              
-	              </div>
+  					
 	            </form>
     				</div>
     				
     			</div>
     			<div class="col-lg-4 mt-5 cart-wrap ftco-animate">
     				<div class="cart-total mb-3">
-    					<h3>Estimation des frais de transports et TVA</h3>
-    					<p>Enter votre destination pour obtenir un devis d'expedition</p>
+    					<h3> Estimation des frais de transports </h3>
+    					<p>  Entrez votre destination pour obtenir une estimation d'expédition  </p>
   						<form action="#" class="info">
 	              <div class="form-group">
-	              	<label for="">Pays</label>
+	              	<label for="">  Pays </label>
 	                <input type="text" class="form-control text-left px-3" placeholder="">
 	              </div>
 	              <div class="form-group">
-	              	<label for="country">Region</label>
+	              	<label for="country"> État  </label>
 	                <input type="text" class="form-control text-left px-3" placeholder="">
 	              </div>
 	              <div class="form-group">
-	              	<label for="country">Boite postal</label>
+	              	<label for="country">code postal </label>
 	                <input type="text" class="form-control text-left px-3" placeholder="">
 	              </div>
 	            </form>
@@ -209,31 +169,29 @@
     			</div>
     			<div class="col-lg-4 mt-5 cart-wrap ftco-animate">
     				<div class="cart-total mb-3">
-    					<h3>Cart Totals</h3>
+    					<h3>Totaux du panier </h3>
     					<p class="d-flex">
-    						<span>Totals</span>
-    						<span>300000</span>
+    						<span>Subtotal</span>
+    						<span>{{cart::subtotal()}}</span>
     					</p>
     					<p class="d-flex">
-    						<span>Livraison</span>
-    						<span>3000</span>
+    						<span>Delivery</span>
+    						<span>$0.00</span>
     					</p>
     					<p class="d-flex">
-    						<span>Remise</span>
-    						<span>3000</span>
+    						<span>Discount</span>
+    						<span>$3.00</span>
     					</p>
     					<hr>
     					<p class="d-flex total-price">
     						<span>Total</span>
-    						<span>30300</span>
+    						<span>$17.60</span>
     					</p>
     				</div>
-    				<p><a href="checkout.html" class="btn btn-primary py-3 px-4">Passer a la caisse</a></p>
+    				<p><a href="checkout.html" class="btn btn-primary py-3 px-4">Proceed to Checkout</a></p>
     			</div>
     		</div>
 			</div>
-		</section>
-
 	
 		<section class="ftco-section ftco-no-pt ftco-no-pb py-5 bg-light">
       <div class="container py-4">
@@ -252,7 +210,8 @@
           </div>
         </div>
       </div>
-    </section>
+  
+	</section>
     <footer class="ftco-footer ftco-section">
       <div class="container">
       

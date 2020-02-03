@@ -3,8 +3,9 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use  App\Catagory;
-class CategoriesController extends Controller
+use App\Message;
+
+class ContactsController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -13,9 +14,7 @@ class CategoriesController extends Controller
      */
     public function index()
     {
-        $catagories = \App\Catagory::orderBy('created_at', 'DESC')->get();
-   return view('products.indexcato', compact('catagories'));
-       
+        //
     }
 
     /**
@@ -25,14 +24,7 @@ class CategoriesController extends Controller
      */
     public function create()
     {
-        $catagories = Catagory::OrderBy('name')->get();
-        return view('admin.products.createcato' , compact('catagories'));
-       
-
-    }
-    public function indexcato(){
-        $catagories = Catagory::all();
-        return view('admin.products.indexcato', compact('catagories'));
+        //
     }
 
     /**
@@ -43,22 +35,20 @@ class CategoriesController extends Controller
      */
     public function store(Request $request)
     {
-
-        $catagories = new Catagory();
-        $catagories->name = $request->input('name');
-        $catagories::create(['name'=>$request->input('name')]);
-        $catagories->save();
-   return redirect('/indexcato');
-
+        
+        $messages = new Message();
+       $messages->name = $request->input('nom');
+       $messages->email= $request->input('email');
+       $messages->message = $request->input('message');
+       
+       $messages->save();
+        return redirect()->back()->with(['success'=>'message envoyer']);
+    }
+    public function contact(){
+        $contacts = \App\Message::orderBy('created_at', 'DESC')->get();
+        return view('contact', compact('contacts'));
     }
 
-public function indexcato_delete($id)
-{
-    $catagories = Catagory::find($id);
-    if($catagories)
-        $catagories->delete();
-    return redirect()->back();
-}
     /**
      * Display the specified resource.
      *

@@ -59,10 +59,15 @@
 		   aria-label="Toggle navigation">
 	        <span class="oi oi-menu"></span> Menu
 	      </button>
-
+       
 	     
 	      <div class="collapse navbar-collapse" id="ftco-nav">
 	        <ul class="navbar-nav ml-auto">
+          <div class="d-flex">
+              @if(session('success'))
+                  <div class="alert alert-success">{{session('success')}}</div>
+              @endif
+            </div>
 	          <li class="nav-item"><a href="{{route('home')}}" class="nav-link">  ACCUEIl</a></li>
 	          <li class="nav-item active dropdown">
               <a class="nav-link dropdown-toggle" href="#" id="dropdown04" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"> Boutiques</a>
@@ -79,6 +84,7 @@
 
 	  
 	          <li class="nav-item"><a href="{{route('contact')}}" class="nav-link">Contact</a></li>
+            <li class="nav-item"><a href="{{route('cart')}}" class="nav-link">Panier<span class="badge badge-pill badge-dart">{{ Cart::count() }}</span></a></li>
 
 	        </ul>
 	      </div>
@@ -104,11 +110,12 @@
     			<div class="col-md-10 mb-5 text-center">
     				<ul class="product-category">
     					<li><a href="#" class="active">TOUT NOS PRODUITS</a></li>
-    				
-    				</ul>
-    			</div>
+              </div>
     		</div>
+    				</ul>
+    	
     		<div class="row">
+       
 			@foreach($products as $product)
     			<div class="col-md-6 col-lg-3 ftco-animate">
     				<div class="product">
@@ -121,12 +128,17 @@
     						<h3><a href="#">{{$product->name}}</a></h3>
     						<div class="d-flex">
     							<div class="pricing">
-		    						<p class="price"><span class="mr-2 price-dc">{{$product->price}}</span><span class="price-sale">80000</span></p>
+		    						<p class="price"><span class="mr-2 ">{{$product->price}}</p>
 		    					</div>
 	    					</div>
 	    					<div class="bottom-area d-flex px-3">
 	    						<div class="m-auto d-flex">
-	    							<a href="{{route('cart')}}" class="add-to-cart d-flex justify-content-center align-items-center text-center">
+	    						<form action="{{route('cart_store')}}" method="post">
+                  @csrf
+                  <input type="hidden" name="product_id" value="{{$product->id}}">
+               
+                  <button  type="submit" class="btn btn-dark">ajout au panier</button>
+                  </form>
                     <a href="{{route('about')}}" class="add-to-cart d-flex justify-content-center align-items-center text-center">
 	    								<span><i class="ion-ios-menu"></i></span>
 	    							</a>

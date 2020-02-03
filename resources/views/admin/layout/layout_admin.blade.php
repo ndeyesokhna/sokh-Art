@@ -60,7 +60,7 @@
     <script src="{{asset('admin/js/vendor/modernizr-2.8.3.min.js')}}"></script>
 </head>
 
-<body>
+<body style="background-color:white;">
     <!--[if lt IE 8]>
             <p class="browserupgrade">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
         <![endif]-->
@@ -81,15 +81,13 @@
 								</a>
                             <ul class="submenu-angle" aria-expanded="true">
                                 
-                                <li><a title="Product List" href="{{route('product.list')}}"><i class="fa fa-female sub-icon-mg" aria-hidden="true"></i> <span class="mini-sub-pro">Liste des Produits</span></a></li>
+                                <li><a title="Product List" href="{{route('product-list')}}"><i class="fa fa-female sub-icon-mg" aria-hidden="true"></i> <span class="mini-sub-pro">Liste des Produits</span></a></li>
                                 <li><a title="Product create" href="/admin/products/create"><i class="fa fa-bolt sub-icon-mg" aria-hidden="true"></i> <span class="mini-sub-pro">Creation de Proiduit</span></a></li>
+                            <li><a title="Product create" href="{{route('categories.create')}}"><i class="fa fa-bolt sub-icon-mg" aria-hidden="true"></i> <span class="mini-sub-pro">Creation de Categories</span></a></li>
                                
+                             <li><a title="Product create" href="{{route('indexcato')}}"><i class="fa fa-bolt sub-icon-mg" aria-hidden="true"></i> <span class="mini-sub-pro">liste des Categories</span></a></li>
                             </ul>
-                         
-                     
-                      
-                      
-                        
+                  
                 </nav>
             </div>
         </nav>
@@ -105,7 +103,7 @@
                 </div>
             </div>
         </div>
-        <div class="header-advance-area">
+        <div class="header-advance-area" >
             <div class="header-top-area">
                 <div class="container-fluid">
                     <div class="row">
@@ -348,25 +346,13 @@
                 </div>
             </div>
             <!-- Mobile Menu start -->
-            <div class="mobile-menu-area">
-                <div class="container">
-                    <div class="row">
-                        <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
-                            <div class="mobile-menu">
-                                <nav id="dropdown">
-                                   
-                                              
-                                    </ul>
-                                </nav>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            @yield('content')
-
-            
+                
+        </div>
+        <main class="" style="min-height:85vh;margin:0px; padding-top:35px;padding-left:10px;">
+           <div>
+                @yield('content')
+           </div>
+        </main>
         <div class="footer-copyright-area">
             <div class="container-fluid">
                 <div class="row">

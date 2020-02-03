@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\UploadedFile;
 use Illuminate\Support\Str;
 
+use Gloudemans\Shoppingcart\Facades\Cart;
 use bar\baz\source_with_namespace;
 use Illuminate\Http\Request;
 use App\Product;
@@ -20,6 +21,7 @@ class ProductsController extends Controller
         $products = Product::orderBy('created_at', 'DESC')->get();
         $products = Product::all();
         return view('product.index', compact('products'));
+        
     }
 
     /**

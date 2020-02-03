@@ -4,7 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Product;
-use  App\Category;
+use  App\Catagory;
 
 class AdminController extends Controller
 {
@@ -14,7 +14,7 @@ class AdminController extends Controller
     }
     public function product_edit($id){
         $product= Product::find($id);
-        $categories = Category::pluck('name','id');
+        $categories = Catagory::pluck('name','id');
         return view('admin/products/product_edit', compact('product','categories'));
 
 
@@ -22,7 +22,7 @@ class AdminController extends Controller
     public function create()
     {
 
-        $categories = category::pluck('name','id');
+        $categories = Catagory::pluck('name','id');
         return view('admin.products.create', compact('categories'));
     }
 public function store(Request $request){

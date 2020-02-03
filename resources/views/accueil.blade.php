@@ -59,49 +59,16 @@
 
 	      
 	      <div class="collapse navbar-collapse" id="ftco-nav">
-	        <ul class="navbar-nav ml-auto">
-	          <li class="nav-item"><a href="{{route('home')}}" class="nav-link">  ACCUEIl</a></li>
-	          <li class="nav-item active dropdown">
-              <a class="nav-link dropdown-toggle" href="#" id="dropdown04" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"> Boutiques</a>
-              <div class="dropdown-menu" aria-labelledby="dropdown04">
-              	<a class="dropdown-item" href="{{route('shop')}}"> Boutiques</a>
-              	<a class="dropdown-item" href="{{route('wishlist')}}">Liste de souhaits</a>
-                <a class="dropdown-item" href="{{route('product_single')}}">Produit unique</a>
-                <a class="dropdown-item" href="{{route('cart')}}"> Mon panier</a>
-                <a class="dropdown-item" href="{{route('checkout')}}"> Caissier</a>
-				<a class="dropdown-item" href="{{route('about')}}">Detail</a>
-              </div>
-            </li>
-
-	          <li class="nav-item"><a href="{{route('contact')}}" class="nav-link">Contact</a></li>
-			  <li class="nav-item dropdown">
-              <a class="nav-link dropdown-toggle" href="#" id="dropdown04" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Compte</a>
-              <div class="dropdown-menu" aria-labelledby="dropdown04">
-			  @guest
-				  <a class="dropdown-item" href="{{ route('login') }}">{{ __('Se connecter') }}</a>
-				  @if (Route::has('register'))
-				  <a class="dropdown-item" href="{{ route('register') }}">{{ __('Sinscrire') }}</a>
-				  @endif
-			 @else
-			 <a class="dropdown-item" href="">{{ Auth::user()->name }}</a><li></li>
-				 @if(Auth::user()->roles == 'admin')
-				 <a class="dropdown-item" href="{{ route('product-list') }}">Profil Admin</a>
-				
-				 @endif
-				 <li><a class="dropdown-item" href="{{ route('logout') }}"
-                                                                onclick="event.preventDefault();
-                                                                document.getElementById('logout-form').submit();">
-                                                               {{ __('Deconnexion') }}
-                                                             </a>
-                                                             <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
-                                                                 @csrf
-                                                            </form>
-										</li>  
-				@endguest               
-
-			
-                                           
-				  
+	      
+	        <ul>
+			  	<li class="nav-item ">	
+						<a class="nav-link " href="{{ route('login') }}">{{ __('Se connecter')}}</a>	
+				</li>
+				<li class="nav-item ">
+					<a class="nav-link " href="{{ route('register') }}">{{ __('Sinscrire')}}</a>
+				</li>		
+			</ul>  
+					  
 	        </ul>
 	      </div>
 	    </div>
