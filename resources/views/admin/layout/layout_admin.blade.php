@@ -4,7 +4,7 @@
 <head>
     <meta charset="utf-8">
     <meta http-equiv="x-ua-compatible" content="ie=edge">
-    <title>Product List | Admin</title>
+    <title> Admin</title>
     <meta name="description" content="">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <!-- favicon
@@ -29,8 +29,8 @@
     <link rel="stylesheet" href="{{asset('admin/css/animate.css')}}">
     <!-- normalize CSS
 		=========================css/normalize.css">
-    <!-- meanmenu icon CSS
-		============================================ -->
+     meanmenu icon CSS-->
+		<!--============================================ -->
     <link rel="stylesheet" href="{{asset('admin/css/meanmenu.min.css')}}">
     <!-- main CSS
 		============================================ -->
@@ -86,6 +86,8 @@
                             <li><a title="Product create" href="{{route('categories.create')}}"><i class="fa fa-bolt sub-icon-mg" aria-hidden="true"></i> <span class="mini-sub-pro">Creation de Categories</span></a></li>
                                
                              <li><a title="Product create" href="{{route('indexcato')}}"><i class="fa fa-bolt sub-icon-mg" aria-hidden="true"></i> <span class="mini-sub-pro">liste des Categories</span></a></li>
+                             <li><a title="Product create" href="{{route('order')}}"><i class="fa fa-bolt sub-icon-mg" aria-hidden="true"></i> <span class="mini-sub-pro">liste des Commandes</span></a></li>
+                             <li><a title="Product create" href="{{route('contact_list')}}"><i class="fa fa-bolt sub-icon-mg" aria-hidden="true"></i> <span class="mini-sub-pro">liste des Contact</span></a></li>
                             </ul>
                   
                 </nav>

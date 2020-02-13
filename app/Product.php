@@ -8,10 +8,11 @@ class Product extends Model
 
 {
     protected $guarded = [];
-   public function Catogory (){
-       return $this->belongsTo("App\Category");
+   public function catogory (){
+       return $this->belongsTo("App\Catagory");
    }
    public function order(){
        return $this->belongsToMany("App\Order");
    }
+
 }

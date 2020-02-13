@@ -69,7 +69,8 @@
                 <a class="dropdown-item" href="{{route('product_single')}}">Produit unique</a>
                 <a class="dropdown-item" href="{{route('cart')}}"> Mon panier</a>
                 <a class="dropdown-item" href="{{route('checkout')}}"> Caissier</a>
-				<a class="dropdown-item" href="{{route('about')}}">Detail</a>
+				
+				<a class="dropdown-item" href="">categories</a>
               </div>
             </li>
 

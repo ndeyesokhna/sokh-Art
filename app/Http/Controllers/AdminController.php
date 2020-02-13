@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Product;
+use App\Order;
 use  App\Catagory;
 
 class AdminController extends Controller
@@ -67,13 +68,12 @@ public function product_delete($id)
         $product->delete();
     return redirect()->back();
 }
-}
-/*public function __construct()
+
+public function order()
 {
-   $this->middleware('auth');
-   $produit->user_id  = Auth::id();
-$produit->save();
+    $orders= Order::all();
+  return view( 'admin.products.order' , compact('orders'));
 }
 
 
-
+}

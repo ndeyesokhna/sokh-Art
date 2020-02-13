@@ -46,7 +46,6 @@ class CategoriesController extends Controller
 
         $catagories = new Catagory();
         $catagories->name = $request->input('name');
-        $catagories::create(['name'=>$request->input('name')]);
         $catagories->save();
    return redirect('/indexcato');
 

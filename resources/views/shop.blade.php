@@ -77,7 +77,7 @@
                 <a class="dropdown-item" href="{{route('product_single')}}">Produit unique</a>
                 <a class="dropdown-item" href="{{route('cart')}}"> Mon panier</a>
                 <a class="dropdown-item" href="{{route('checkout')}}"> Caissier</a>
-                <a class="dropdown-item" href="{{route('about')}}"> Detail</a>
+                <a class="dropdown-item" href=""> Detail</a>
               
               </div>
             </li>
@@ -110,6 +110,12 @@
     			<div class="col-md-10 mb-5 text-center">
     				<ul class="product-category">
     					<li><a href="#" class="active">TOUT NOS PRODUITS</a></li>
+              @foreach($catagories as $catagorie)
+              <li><a href="{{route('affichcato', ['id'=>$catagorie->id])}}">{{$catagorie->name}}</a></li>
+            @endforeach
+    				</ul>
+    			</div>
+    		</div>
               </div>
     		</div>
     				</ul>
@@ -121,7 +127,6 @@
     				<div class="product">
     					<a href="#" class="img-prod"><img class="img-fluid" src="{{$product->image ? asset($product->image)
 						 : asset('uploads/images/default.png')}}" alt="Colorlib Template" style="width:253px; height:246px;">
-    						<span class="status">30%</span>
     						<div class="overlay"></div>
     					</a>
     					<div class="text py-3 pb-4 px-3 text-center">
@@ -139,7 +144,7 @@
                
                   <button  type="submit" class="btn btn-dark">ajout au panier</button>
                   </form>
-                    <a href="{{route('about')}}" class="add-to-cart d-flex justify-content-center align-items-center text-center">
+                    <a href="{{route('about',['id'=>$product->id])}}" class="add-to-cart d-flex justify-content-center align-items-center text-center">
 	    								<span><i class="ion-ios-menu"></i></span>
 	    							</a>
 	    						

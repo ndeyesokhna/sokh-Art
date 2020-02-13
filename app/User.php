@@ -42,6 +42,8 @@ class User extends Authenticatable
     public  function children(){
         return $this->hasMany('App\User','parent_id' ,'id');
     }
-    
+    public function orders(){
+        return $this->hasMany('App\Order');
+    }
 
 }

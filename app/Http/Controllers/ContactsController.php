@@ -48,6 +48,10 @@ class ContactsController extends Controller
         $contacts = \App\Message::orderBy('created_at', 'DESC')->get();
         return view('contact', compact('contacts'));
     }
+    public function contact_list(){
+        $messages = Message::all();
+        return view('admin.products.contact_list', compact('messages'));
+    }
 
     /**
      * Display the specified resource.

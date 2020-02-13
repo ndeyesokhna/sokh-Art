@@ -12,18 +12,22 @@
 */
 
 Route::get('/accueil', "HomeController@index")->name('home');
-Route::get('/',"HomeController@accueil")->name('accueil');
+Route::get('/',"HomeController@index")->name('home');
 Route::get('/shop', "HomeController@shop")->name('shop');
-Route::get('/about', "HomeController@about")->name('about');
+Route::get('/user/about/{id}', "HomeController@about")->name('about');
 Route::get('/blog', "HomeController@blog")->name('blog');
+Route::get('/affichcato/{id}', "HomeController@affichcato")->name('affichcato');
 Route::get('/contact', "HomeController@contact")->name('contact');
 Route::post('/contact', "ContactsController@store")->name('ajout_contact');
+
+Route::post('/checkout', "HomeController@store")->name('ajout_commande');
+
 Route::get('/contact', "ContactsController@contact")->name('contact');
 Route::post('/panier/ajouter', "CartsController@store")->name('cart_store');
 Route::get('/videpanier', function(){
     Cart::destroy();
 });
-//Route::get('/panier', "CartsController@cart")->name('cart');
+Route::get('/merci', "HomeController@store")->name('checkout.thankYou');
 Route::delete('/panier/{rowId}','CartsController@destroy')->name('cart.destroy');
 
 
@@ -32,7 +36,7 @@ Route::delete('/panier/{rowId}','CartsController@destroy')->name('cart.destroy')
 
 
 
-Route::get('/checkout', "HomeController@checkout")->name('checkout');
+Route::get('/checkout', "HomeController@checkout")->name('checkout')->middleware('auth');
 Route::get('/cart', "CartsController@cart")->name('cart');
 Route::get('/blog_single', "HomeController@blog_single")->name('blog_single');
 Route::get('/product_single', "HomeController@product_single")->name('product_single');
@@ -45,7 +49,7 @@ Route::resource('product', 'ProductsController');
 Route::patch("/product/update/{id}", "ProductsController@update")->name('product.update');
 Route::get("/product/edit/{id}", "ProductsController@edit")->name('editer_produit');
 Route::get("/indexcato", "CategoriesController@indexcato")->name('indexcato');
-
+Route::get('/admin/products/contact_list', "ContactsController@contact_list")->name('contact_list');
 
 
 Route::group(['middleware'=>['auth','admin']], function(){
@@ -55,6 +59,7 @@ Route::get('/admin/product', "AdminController@product_list")->name('product-list
 Route::get('/admin/product_edit/{id}' , "AdminController@product_edit")->name('product.edit');
 Route::delete('/admin/product/delete/{id}' , "AdminController@product_delete")->name('product.delete');
 Route::delete('/admin/indexcato/delete/{id}' , "CategoriesController@indexcato_delete")->name('indexcato.delete');
+Route::get('/admin/products/order' , "AdminController@order")->name('order');
 });
 
 Auth::routes();

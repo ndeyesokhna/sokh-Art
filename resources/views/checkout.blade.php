@@ -59,6 +59,9 @@
 
 	      <div class="collapse navbar-collapse" id="ftco-nav">
 	        <ul class="navbar-nav ml-auto">
+			@if(session('success'))
+                  <div class="alert alert-success">{{session('success')}}</div>
+              @endif
 	          <li class="nav-item"><a href="{{route('home')}}" class="nav-link">  ACCUEIl</a></li>
 	          <li class="nav-item active dropdown">
               <a class="nav-link dropdown-toggle" href="#" id="dropdown04" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"> Boutiques</a>
@@ -91,159 +94,55 @@
       </div>
     </div>
 
-    <section class="ftco-section">
-      <div class="container">
-        <div class="row justify-content-center">
-          <div class="col-xl-7 ftco-animate">
-						<form action="#" class="billing-form">
-							<h3 class="mb-4 billing-heading">Détails de la facturation</h3>
-	          	<div class="row align-items-end">
-	          		<div class="col-md-6">
-	                <div class="form-group">
-	                	<label for="firstname"> Prénom</label>
-	                  <input type="text" class="form-control" placeholder="">
-	                </div>
-	              </div>
-	              <div class="col-md-6">
-	                <div class="form-group">
-	                	<label for="lastname">Nom </label>
-	                  <input type="text" class="form-control" placeholder="">
-	                </div>
-                </div>
-                <div class="w-100"></div>
-		            <div class="col-md-12">
-		            	<div class="form-group">
-		            		<label for="country"> État / Pays</label>
-		            		<div class="select-wrap">
-		                  <div class="icon"><span class="ion-ios-arrow-down"></span></div>
-		                  <select name="" id="" class="form-control">
-		                  	<option value="">France</option>
-		                    <option value="">Italy</option>
-		                    <option value="">Senegal</option>
-		                    <option value="">USA</option>
-		                    <option value="">Gambi</option>
-		                    <option value="">Mali</option>
-		                  </select>
-		                </div>
-		            	</div>
-		            </div>
-		            <div class="w-100"></div>
-		            <div class="col-md-6">
-		            	<div class="form-group">
-	                	<label for="streetaddress">Adresse de rue </label>
-	                  <input type="text" class="form-control" placeholder="House number and street name">
-	                </div>
-		            </div>
-		            <div class="col-md-6">
-		            	<div class="form-group">
-	                  <input type="text" class="form-control" placeholder="Appartment, suite, unit etc: (optional)">
-	                </div>
-		            </div>
-		            <div class="w-100"></div>
-		            <div class="col-md-6">
-		            	<div class="form-group">
-	                	<label for="towncity"> Ville </label>
-	                  <input type="text" class="form-control" placeholder="">
-	                </div>
-		            </div>
-		            <div class="col-md-6">
-		            	<div class="form-group">
-		            		<label for="postcodezip"> Code postal / ZIP *</label>
-	                  <input type="text" class="form-control" placeholder="">
-	                </div>
-		            </div>
-		            <div class="w-100"></div>
-		            <div class="col-md-6">
-	                <div class="form-group">
-	                	<label for="phone">Téléphone </label>
-	                  <input type="text" class="form-control" placeholder="">
-	                </div>
-	              </div>
-	              <div class="col-md-6">
-	                <div class="form-group">
-	                	<label for="emailaddress"> Adresse e-mail</label>
-	                  <input type="text" class="form-control" placeholder="">
-	                </div>
-                </div>
-                <div class="w-100"></div>
-                <div class="col-md-12">
-                	<div class="form-group mt-4">
-										<div class="radio">
-										  <label class="mr-3"><input type="radio" name="optradio">Créer un compte?
-
-</label>
-										  <label><input type="radio" name="optradio">Envoyer à une adresse différente </label>
-										</div>
-									</div>
-                </div>
-	            </div>
-	          </form><!-- END -->
-					</div>
-					<div class="col-xl-5">
-	          <div class="row mt-5 pt-3">
-	          	<div class="col-md-12 d-flex mb-5">
-	          		<div class="cart-detail cart-total p-3 p-md-4">
-	          			<h3 class="billing-heading mb-4">Total du panier </h3>
-	          			<p class="d-flex">
-		    						<span> Total</span>
-		    						<span>300000</span>
-		    					</p>
-		    					<p class="d-flex">
-		    						<span>Livraison </span>
-		    						<span>000</span>
-		    					</p>
-		    					<p class="d-flex">
-		    						<span>Remise </span>
-		    						<span>3000</span>
-		    					</p>
-		    					<hr>
-		    					<p class="d-flex total-price">
-		    						<span>Total</span>
-		    						<span>303000</span>
-		    					</p>
-								</div>
-	          	</div>
-	          	<div class="col-md-12">
-	          		<div class="cart-detail p-3 p-md-4">
-	          			<h3 class="billing-heading mb-4">Mode de paiement </h3>
-									<div class="form-group">
-										<div class="col-md-12">
-											<div class="radio">
-											   <label><input type="radio" name="optradio" class="mr-2">Transfert bancaire direct
-
-</label>
-											</div>
-										</div>
-									</div>
-									<div class="form-group">
-										<div class="col-md-12">
-											<div class="radio">
-											   <label><input type="radio" name="optradio" class="mr-2"> Vérifier le paiement</label>
-											</div>
-										</div>
-									</div>
-									<div class="form-group">
-										<div class="col-md-12">
-											<div class="radio">
-											   <label><input type="radio" name="optradio" class="mr-2"> Pay Pal</label>
-											</div>
-										</div>
-									</div>
-									<div class="form-group">
-										<div class="col-md-12">
-											<div class="checkbox">
-											   <label><input type="checkbox" value="" class="mr-2">J'ai lu et j'accepte les termes et conditions </label>
-											</div>
-										</div>
-									</div>
-									<p><a href="#"class="btn btn-primary py-3 px-4"> Commander</a></p>
-								</div>
-	          	</div>
-	          </div>
-          </div> <!-- .col-md-8 -->
-        </div>
-      </div>
-    </section> <!-- .section -->
+	@if(session('success'))
+				   <div class="alert alert-success">{{session('success')}}</div>
+			   @endif
+	<div class="row block-9">
+           
+		   <div class="col-md-6 order-md-last">
+			 <div class="d-flex">
+			  
+			 </div> 
+			 
+			 <form action="{{route('ajout_commande')}}" method="post" class="bg-white p-5 contact-form">
+			 @csrf
+			 	@foreach(Cart::content() as $product)  
+			   <div class="form-group">
+				 <input  id=""  class="form-control" name="product" placeholder="{{$product->name}}">
+			   </div>
+			   @endforeach
+			   <div class="form-group">
+				 <input type="text" class="form-control" name="total" placeholder="{{Cart::total()}}" >
+			   </div>
+			   <div class="form-group">
+				 <input type="text" id="frai_liver" class="form-control" name="" placeholder="frai de livraison" >
+			   </div>
+			  
+			   <div class="form-group">
+				 <input type="text" class="form-control" name="address" placeholder="address" >
+			   </div>
+			   <div class="form-group">
+				 <input type="text" id="livred" class="form-control" name="ville" placeholder=" ville">
+			   </div>
+			   <div class="form-group">
+				 <input type="text" class="form-control" name="email" placeholder="email" >
+			   </div>
+			   <div class="form-group">
+				 <input type="text" class="form-control" name="telephone" placeholder="telephone" >
+			   </div>
+			
+				 <input type="submit" value="Envoie Message" class="btn btn-primary py-3 px-5">
+			   </div>
+			 </form>
+		   
+		   </div>
+		
+ 
+		   <div class="col-md-6 d-flex">
+			   <div id="map" class="bg-white"></div>
+		   </div>
+		 </div>
+	   </div>
 
 		<section class="ftco-section ftco-no-pt ftco-no-pb py-5 bg-light">
       <div class="container py-4">
@@ -359,21 +258,24 @@
   <script src="{{asset('temp/js/main.js')}}"></script>
 
   <script>
+  
+		if(document.getElementById('livred').selected){
+			document.getElementById('frai_liver').innerText="1500 FCFA";
+		}
+		else{
+			document.getElementById('frai_liver').innerText="2500 FCFA";
+		}
+
 		$(document).ready(function(){
 
 		var quantitiy=0;
-		   $('.quantity-right-plus').click(function(e){
-		        
+		   $('.quantity-right-plus').click(function(e){		        
 		        // Stop acting like a button
 		        e.preventDefault();
 		        // Get the field name
-		        var quantity = parseInt($('#quantity').val());
-		        
-		        // If is not undefined
-		            
-		            $('#quantity').val(quantity + 1);
-
-		          
+		        var quantity = parseInt($('#quantity').val());		        
+		        // If is not undefined		            
+		            $('#quantity').val(quantity + 1);	          
 		            // Increment
 		        
 		    });

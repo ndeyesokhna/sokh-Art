@@ -27,7 +27,7 @@
                                                     
                                                     <td>{{$product->description}}</td>
                                                     <td>{{$product->price}}</td>
-                                                    <td>{{$product->catogories->name ??''}}</td>
+                                                    <td>{{$product->catogory->name}}</td>
                                                 
 
                                                 

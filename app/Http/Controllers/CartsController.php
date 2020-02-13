@@ -36,12 +36,12 @@ class CartsController extends Controller
             return redirect()->route('shop')->with('success' ,'le produit a deja ete ajouter');    
          }
          $product = Product::find($request->product_id);
-        cart::add($product->id ,$product->name ,1, $product->price );
+        cart::add($product->id ,$product->name ,1, $product->price,  ['image'=>$product->image] );
 
         return redirect()->route('shop')->with('success' ,'le produit a bien ete ajouter');
     }
 
-    /**
+    /**name
      * Display the specified resource.
      *
      * @param  int  $id

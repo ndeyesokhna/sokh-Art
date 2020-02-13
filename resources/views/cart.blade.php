@@ -68,7 +68,7 @@
                 <a class="dropdown-item" href="{{route('product_single')}}">Produit unique</a>
                 <a class="dropdown-item" href="{{route('cart')}}"> Mon panier</a>
 				<a class="dropdown-item" href="{{route('checkout')}}"> Caissier</a>
-				<a class="dropdown-item" href="{{route('about')}}"> Detail</a>
+				
               </div>
 	     
             </li>
@@ -96,9 +96,10 @@
 		@if(Cart::count() > 0)
 			<div class="row justify-content-center mt-5"> 
 				@foreach(Cart::content() as $product)
+				
 					<div class="col-md-6 col-lg-3 ftco-animate">
 						<div class="product">
-							<a href="#" class="img-prod"><img class="img-fluid" src="{{$product->image}}" alt="Colorlib Template" style="width:253px; height:246px;">
+							<a href="#" class="img-prod"><img class="img-fluid" src="{{$product->options['image']}}" alt="Colorlib Template" style="width:253px; height:246px;">
 								<span class="status">30%</span>
 								<div class="overlay"></div>
 							</a>
@@ -119,9 +120,11 @@
 											<i class="fa fa-trash" ></i>
 										</button>
 									</form>
-
-
-
+									<div>
+									<a href="{{route('shop')}}" class="add-to-cart d-flex justify-content-center align-items-center text-center">
+	    								<span><i class="ion-ios-menu"></i></span>
+	    							</a>
+                                </div>
 									</div>
 								</div>
 							</div>
@@ -139,56 +142,26 @@
 
 		<div class="row justify-content-end">
     			<div class="col-lg-4 mt-5 cart-wrap ftco-animate">
-    				<div class="cart-total mb-3">
-    					
-  					
-	            </form>
-    				</div>
     				
     			</div>
     			<div class="col-lg-4 mt-5 cart-wrap ftco-animate">
-    				<div class="cart-total mb-3">
-    					<h3> Estimation des frais de transports </h3>
-    					<p>  Entrez votre destination pour obtenir une estimation d'expédition  </p>
-  						<form action="#" class="info">
-	              <div class="form-group">
-	              	<label for="">  Pays </label>
-	                <input type="text" class="form-control text-left px-3" placeholder="">
-	              </div>
-	              <div class="form-group">
-	              	<label for="country"> État  </label>
-	                <input type="text" class="form-control text-left px-3" placeholder="">
-	              </div>
-	              <div class="form-group">
-	              	<label for="country">code postal </label>
-	                <input type="text" class="form-control text-left px-3" placeholder="">
-	              </div>
-	            </form>
-    				</div>
-    				<p><a href="checkout.html" class="btn btn-primary py-3 px-4">Estimation</a></p>
+    				
     			</div>
     			<div class="col-lg-4 mt-5 cart-wrap ftco-animate">
     				<div class="cart-total mb-3">
     					<h3>Totaux du panier </h3>
     					<p class="d-flex">
-    						<span>Subtotal</span>
-    						<span>{{cart::subtotal()}}</span>
-    					</p>
-    					<p class="d-flex">
-    						<span>Delivery</span>
-    						<span>$0.00</span>
-    					</p>
-    					<p class="d-flex">
-    						<span>Discount</span>
-    						<span>$3.00</span>
-    					</p>
-    					<hr>
-    					<p class="d-flex total-price">
     						<span>Total</span>
-    						<span>$17.60</span>
+    						<span>{{Cart::subtotal()}}</span>
+							<p class="d-flex">
+							<span>Taxe</span>
+							<span> {{Cart::tax()}}</span>
+		    						
+							
     					</p>
     				</div>
-    				<p><a href="checkout.html" class="btn btn-primary py-3 px-4">Proceed to Checkout</a></p>
+
+    				<p><a href="checkout" class="btn btn-primary py-3 px-4">Passer à la caisse </a></p>
     			</div>
     		</div>
 			</div>

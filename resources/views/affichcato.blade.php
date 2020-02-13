@@ -43,7 +43,7 @@
 						    <span class="text">sokhnatoure454@gail.com</span>
 					    </div>
 					    <div class="col-md-5 pr-4 d-flex topper align-items-center text-lg-right">
-						    <span class="text">>vente de tableau d'art </span>
+						    <span class="text">vente de tableau d'art &amp; Free Returns</span>
 					    </div>
 				    </div>
 			    </div>
@@ -52,59 +52,78 @@
     </div>
     <nav class="navbar navbar-expand-lg navbar-dark ftco_navbar bg-dark ftco-navbar-light" id="ftco-navbar">
 	    <div class="container">
-	      <a class="navbar-brand" href="{{route('home')}}">Sokhna'Art</a>
-	      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#ftco-nav" aria-controls="ftco-nav" aria-expanded="false" aria-label="Toggle navigation">
+	      <a class="navbar-brand" href="index.html">Sokhna'Art</a>
+		  <button class="navbar-toggler" type="button" data-toggle="collapse"
+		  
+		  data-target="#ftco-nav" aria-controls="ftco-nav" aria-expanded="false"
+		   aria-label="Toggle navigation">
 	        <span class="oi oi-menu"></span> Menu
 	      </button>
-
+       
+	     
 	      <div class="collapse navbar-collapse" id="ftco-nav">
 	        <ul class="navbar-nav ml-auto">
+          <div class="d-flex">
+              @if(session('success'))
+                  <div class="alert alert-success">{{session('success')}}</div>
+              @endif
+            </div>
 	          <li class="nav-item"><a href="{{route('home')}}" class="nav-link">  ACCUEIl</a></li>
 	          <li class="nav-item active dropdown">
-              <a class="nav-link dropdown-toggle" href="#" id="dropdown04" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Boutiques </a>
+              <a class="nav-link dropdown-toggle" href="#" id="dropdown04" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"> Boutiques</a>
               <div class="dropdown-menu" aria-labelledby="dropdown04">
-              	<a class="dropdown-item" href="{{route('shop')}}"Boutiques> </a>
+              	<a class="dropdown-item" href="{{route('shop')}}">Boutiques</a>
               	<a class="dropdown-item" href="{{route('wishlist')}}">Liste de souhaits</a>
                 <a class="dropdown-item" href="{{route('product_single')}}">Produit unique</a>
                 <a class="dropdown-item" href="{{route('cart')}}"> Mon panier</a>
-				<a class="dropdown-item" href="{{route('checkout')}}">Caissier</a>
-				
+                <a class="dropdown-item" href="{{route('checkout')}}"> Caissier</a>
+               
+              
               </div>
             </li>
-	
-	        
+
+	  
 	          <li class="nav-item"><a href="{{route('contact')}}" class="nav-link">Contact</a></li>
-	          
+            <li class="nav-item"><a href="{{route('cart')}}" class="nav-link">Panier<span class="badge badge-pill badge-dart">{{ Cart::count() }}</span></a></li>
 
 	        </ul>
 	      </div>
 	    </div>
 	  </nav>
-    <!-- END nav -->
+      <!--nav-->
+     
 
-    <div class="hero-wrap hero-bread" style="background-image: url('images/images.jpeg');">
+
+      <div class="hero-wrap hero-bread" style="background-image: url('{{asset('temp/images/photo05052010008.jpg')}}');">
       <div class="container">
         <div class="row no-gutters slider-text align-items-center justify-content-center">
           <div class="col-md-9 ftco-animate text-center">
-			  <p class="breadcrumbs"><span class="mr-2"><a href="index.html">Accueil</a>
-			</span> <span>Liste de souhaits</span></p>
-            <h1 class="mb-0 bread">Ma liste d'envies</h1>
+			  <p class="breadcrumbs"><span class="mr-2"><a href="index.html">Accueil</a></span>
+				 <span>PRODUITS</span></p>
+            <h1 class="mb-0 bread">PRODUITS</h1>
           </div>
         </div>
       </div>
     </div>
 
-    <section class="ftco-section ftco-cart">
-			<div class="container">
-				<div class="row">
-    			<div class="col-md-12 ftco-animate">
-    				<div class="cart-list">
-	    				<table class="table">
-						    <thead class="thead-primary">
-						      <tr class="text-center">
-						     
-						
-						<div class="row">
+    <section class="ftco-section">
+    
+    	<div class="container">
+    		<div class="row justify-content-center">
+    			<div class="col-md-10 mb-5 text-center">
+    				<ul class="product-category">
+    					<li><a href="#" >TOUT NOS PRODUITS</a></li>
+                       
+              @foreach($cats as $catagorie)
+              
+              <li id="cato"><a class="active"  href="{{route('affichcato', ['id'=>$catagorie->id])}}">{{$catagorie->name}}</a></li>
+            @endforeach
+    				</ul>
+    			</div>
+    		</div>
+            </div>
+    		<div class="row">
+       
 			@foreach($products as $product)
     			<div class="col-md-6 col-lg-3 ftco-animate">
     				<div class="product">
@@ -117,49 +136,41 @@
     						<h3><a href="#">{{$product->name}}</a></h3>
     						<div class="d-flex">
     							<div class="pricing">
-		    						<p class="price"><span class="mr-2 price-dc">{{$product->price}}</span><span class="price-sale">$80.00</span></p>
+		    						<p class="price"><span class="mr-2 ">{{$product->price}}</p>
 		    					</div>
 	    					</div>
-	    					
+	    					<div class="bottom-area d-flex px-3">
+	    						<div class="m-auto d-flex">
+	    						<form action="{{route('cart_store')}}" method="post">
+                  @csrf
+                  <input type="hidden" name="product_id" value="{{$product->id}}">
+               
+                  <button  type="submit" class="btn btn-dark">ajout au panier</button>
+                  </form>
+                   
+	    						
+    							</div>
+    						</div>
     					</div>
     				</div>
     			</div>
 				@endforeach
-					
-						        
-						        	
-					    
-						
-						
-						        </td>
-			
-					          	</div>
-					          </td>
-						        
-				
-						      </tr><!-- END TR-->
-						    </tbody>
-						  </table>
-					  </div>
-    			</div>
+    			
     		</div>
-			</div>
-		</section>
 
-		<section class="ftco-section ftco-no-pt ftco-no-pb py-5 bg-light">
+
+    <section class="ftco-section ftco-no-pt ftco-no-pb py-5 bg-light">
       <div class="container py-4">
         <div class="row d-flex justify-content-center py-5">
           <div class="col-md-6">
-          	<h2 style="font-size: 22px;" class="mb-0"></h2>
-			  <h2 style="font-size: 22px;" class="mb-0">Abonnez-vous à notre newsletter
-			</h2>
-          	<span>Recevez des mises à jour par e-mail sur nos dernières boutiques et nos offres spéciales></span>
+          	<h2 style="font-size: 22px;" class="mb-0">Abonnez-vous à notre newsletter</h2>
+          	<span>Recevez des mises à jour par e-mail sur nos dernières boutiques et nos offres spéciales</span>
           </div>
           <div class="col-md-6 d-flex align-items-center">
             <form action="#" class="subscribe-form">
               <div class="form-group d-flex">
-                <input type="text" class="form-control" placeholder="Enter email address">
-                <input type="submit" value="Subscribe" class="submit px-3">
+                <input type="text" class="form-control" placeholder="Enter  votre email">
+                <input type="submit" value="Envoyer" class="submit px-3">
               </div>
             </form>
           </div>
@@ -237,7 +248,10 @@
           </div>
         </div>
       </div>
-    </footer>s
+    </footer>
+    
+  
+
   <!-- loader -->
   <div id="ftco-loader" class="show fullscreen"><svg class="circular" width="48px" height="48px"><circle class="path-bg" cx="24" cy="24" r="22" fill="none" stroke-width="4" stroke="#eeeeee"/><circle class="path" cx="24" cy="24" r="22" fill="none" stroke-width="4" stroke-miterlimit="10" stroke="#F96D00"/></svg></div>
 
@@ -258,43 +272,6 @@
   <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBVWaKrjvy3MaE7SQ74_uJiULgl1JY0H2s&sensor=false"></script>
   <script src="{{asset('temp/js/google-map.js')}}"></script>
   <script src="{{asset('temp/js/main.js')}}"></script>
-
-  <script>
-		$(document).ready(function(){
-
-		var quantitiy=0;
-		   $('.quantity-right-plus').click(function(e){
-		        
-		        // Stop acting like a button
-		        e.preventDefault();
-		        // Get the field name
-		        var quantity = parseInt($('#quantity').val());
-		        
-		        // If is not undefined
-		            
-		            $('#quantity').val(quantity + 1);
-
-		          
-		            // Increment
-		        
-		    });
-
-		     $('.quantity-left-minus').click(function(e){
-		        // Stop acting like a button
-		        e.preventDefault();
-		        // Get the field name
-		        var quantity = parseInt($('#quantity').val());
-		        
-		        // If is not undefined
-		      
-		            // Increment
-		            if(quantity>0){
-		            $('#quantity').val(quantity - 1);
-		            }
-		    });
-		    
-		});
-	</script>
     
   </body>
 </html>

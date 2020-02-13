@@ -72,7 +72,7 @@
                 <a class="dropdown-item" href="{{route('product_single')}}">Produit unique</a>
                 <a class="dropdown-item" href="{{route('cart')}}"> Mon panier</a>
                 <a class="dropdown-item" href="{{route('checkout')}}">Caissier </a>
-                <a class="dropdown-item" href="{{route('about')}}">Details </a>
+               
                 
               </div>
             </li>
@@ -86,24 +86,38 @@
     </nav>
     
     <section class="ftco-section ftco-degree-bg">
-    @foreach($products as $product)
-      <div class="container">
-        <div class="row">
-          <div class="col-lg-8 ftco-animate">
-						<h2 class="mb-3">Boucle d'oreille</h2>
-            <p>Toutes mes toiles sont 100% peintes à la main, à la peinture acrylique, dans mon atelier à Benfeld. Chaque tableau est peint par mes soins, signé, contre signé, daté et livré avec certificat d’authenticité. Les toiles proposées dans la boutique sont des créations UNIQUES. Une large gamme de tableaux est disponible, passant par des formats carrés, rectangles, longs, mais aussi des diptyques, triptyques, quadriptyques et des grands formats XXL
-</p>
-            <p>
-              <img  src="{{$product->image ? asset($product->image)
-						 : asset('uploads/images/default.png')}}" alt="" class="img-fluid">
-            </p>
-            <p>Molestiae cupiditate inventore animi, maxime sapiente optio, illo est nemo veritatis repellat sunt doloribus nesciunt! Minima laborum magni reiciendis qui voluptate quisquam voluptatem soluta illo eum ullam incidunt rem assumenda eveniet eaque sequi deleniti tenetur dolore amet fugit perspiciatis ipsa, odit. Nesciunt dolor minima esse vero ut ea, repudiandae suscipit!</p>
-            <p>Temporibus ad error suscipit exercitationem hic molestiae totam obcaecati rerum, eius aut, in. Exercitationem atque quidem tempora maiores ex architecto voluptatum aut officia doloremque. Error dolore voluptas, omnis molestias odio dignissimos culpa ex earum nisi consequatur quos odit quasi repellat qui officiis reiciendis incidunt hic non? Debitis commodi aut, adipisci.</p>
-            <p>
-              </div>
-              </div>
-              </div>
-				@endforeach
+  
+    			<div class="ftco-animate">
+          <div class="container">
+    		<div class="d-flex justify-content-center">
+    			<div class="">
+    				
+    				<div class="product">
+            <div class="">
+    					<a href="#" class="img-prod"><img class="img-fluid" src="{{$product->image ? asset($product->image)
+						 : asset('uploads/images/default.png')}}" alt="Colorlib Template" style="width:253px; height:246px;">
+    						<div class="overlay"></div>
+    					</a>
+    					<div class="text py-3 pb-4 px-3 text-center">
+    						<h3><a href="#">{{$product->name}}</a></h3>
+                <h2> <a href="#">{{$product->catogory->name}}  </a></h2>
+    						<div class="pricing">
+		    						<p class="price"><span class="mr-2 ">{{$product->description}}</p>
+		    					</div>
+    							<div class="pricing">
+		    						<p class="price"><span class="mr-2 ">{{$product->price}}</p>
+		    					</div>
+	    					</div>
+                </div>
+    				</div>
+    			</div>
+          </div>
+			
+
+   </section>
+
+
+
 
       <section class="ftco-section ftco-no-pt ftco-no-pb py-5 bg-light">
       <div class="container py-4">

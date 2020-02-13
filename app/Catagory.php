@@ -7,7 +7,7 @@ use Illuminate\Database\Eloquent\Model;
 class Catagory extends Model
 {
     protected $guarded = [];
-    public function Products(){
+    public function products(){
         return $this->hasMany("App\Product");
     }
 }
